@@ -7,8 +7,16 @@ final class TestCoreFrameworkTests: XCTestCase {
         let color = TestCoreFramework.colorFromHexString("FF0000")
         XCTAssertEqual(color, .red)
     }
+    
+    func testCoreFrameworkColorsAreEqual() {
+        let color = TestCoreFramework.colorFromHexString("006736")
+        XCTAssertEqual(color, TestCoreFramework.frameworkColor)
+
+    }
 
     static var allTests = [
         ("testColorRedEqual", testColorRedEqual),
+        ("testCoreFrameworkColorsAreEqual", testCoreFrameworkColorsAreEqual),
     ]
+    
 }

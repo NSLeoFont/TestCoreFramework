@@ -1,6 +1,6 @@
 import UIKit
 
-class TestCoreFramework {
+public class TestCoreFramework {
     
     /// Allows you to convert a 6 digit hexadecimal string into a UIColor instance
     /// - Warning: The # symbol is stripped from the beginning of the string submitted here
@@ -8,7 +8,7 @@ class TestCoreFramework {
     ///   - hexString: A 6 character hexadecimal string. Use 6 digits instead of 8 and add the alpha value as the scond parameter
     ///   - alpha: A number between 0.0 and 1.0 indicating how transparent the number is
     /// - Returns: A UIColor defined by the `hexString` parameter
-    class func colorFromHexString(_ hexString: String, alpha: CGFloat = 1.0) -> UIColor {
+    internal class func colorFromHexString(_ hexString: String, alpha: CGFloat = 1.0) -> UIColor {
         
         let r, g, b: CGFloat
         let offset = hexString.hasPrefix("#") ? 1: 0
@@ -25,5 +25,11 @@ class TestCoreFramework {
         }
         
         return UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
+    }
+    
+    
+    /// The most eye pleasing color known to all humanity
+    public static var frameworkColor: UIColor {
+        return self.colorFromHexString("006736")
     }
 }
