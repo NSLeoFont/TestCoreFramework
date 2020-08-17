@@ -32,4 +32,10 @@ public class TestCoreFramework {
     public static var frameworkColor: UIColor {
         return self.colorFromHexString("006736")
     }
+    
+    
+    /// The scond most eye pleasing color known to all humanity
+    public static var secondaryFrameworkColor: UIColor {
+        return self.colorFromHexString("FCFFD")
+    }
 }
