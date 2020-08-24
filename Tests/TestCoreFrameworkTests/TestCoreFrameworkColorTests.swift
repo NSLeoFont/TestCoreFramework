@@ -1,22 +1,22 @@
 import XCTest
 @testable import TestCoreFramework
 
-final class TestCoreFrameworkTests: XCTestCase {
+final class TestCoreColorFrameworkTests: XCTestCase {
    
     func testColorRedEqual() {
-        let color = TestCoreFramework.colorFromHexString("FF0000")
+        let color = TestCoreFramework.Color.fromHexString("FF0000")
         XCTAssertEqual(color, .red)
     }
     
     func testPrimaryFrameworkColorsAreEqual() {
-        let color = TestCoreFramework.colorFromHexString("006736")
-        XCTAssertEqual(color, TestCoreFramework.frameworkColor)
+        let color = TestCoreFramework.Color.fromHexString("006736")
+        XCTAssertEqual(color, TestCoreFramework.Color.frameworkColor)
 
     }
     
     func testSecondaryFrameworkColorsAreEqual() {
-        let color = TestCoreFramework.colorFromHexString("FCFFD")
-        XCTAssertEqual(color, TestCoreFramework.secondaryFrameworkColor)
+        let color = TestCoreFramework.Color.fromHexString("FCFFD")
+        XCTAssertEqual(color, TestCoreFramework.Color.secondaryFrameworkColor)
     }
 
     static var allTests = [
