@@ -7,6 +7,21 @@
 
 import Foundation
 
+protocol NetworkSession {
+
+    func get(from url: URL, completionHandler: @escaping (Data?, Error?) -> Void)
+    
+}
+
+extension URLSession: NetworkSession {
+    func get(from url: URL, completionHandler: @escaping (Data?, Error?) -> Void) {
+        let task = dataTask(with: url) { data, _, error in
+            completionHandler(data, error)
+        }
+        task.resume()
+    }
+}
+
 extension TestCoreFramework {
 
     public class Networking {
@@ -20,19 +35,21 @@ extension TestCoreFramework {
         /// -Warning: Must create before any public APIs
         public class Manager {
             
-            private let session = URLSession.shared
+            internal var session: NetworkSession = URLSession.shared
             
             public init() {}
             
+            
+            /// Call to the live Internet to retrieve data from a specific location
+            /// - Parameters:
+            ///   - url: The location you want to fetch data from
+            ///   - completion: Returns a result object which signifies the status of the reuqest
             public func loadData(from url: URL, completion: @escaping (NetworkingResult<Data>) -> Void)  {
                 
-                let task = session.dataTask(with: url) { data, response, error in
+                session.get(from: url) { data, error in
                     let result = data.map(NetworkingResult<Data>.success) ?? .failure(error)
                     completion(result)
                 }
-                task.resume()
-                
-                
             }
         }
         
