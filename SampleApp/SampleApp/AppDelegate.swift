@@ -20,6 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let color = TestCoreFramework.Color.frameworkColor
         let secondaryColor = TestCoreFramework.Color.secondaryFrameworkColor
         
+        let url = URL(string: "https://www.apple.com")!
+        let manager = TestCoreFramework.Networking.Manager()
+        manager.loadData(from: url, completion: { result in
+            print(result)
+        })
+        
         
         return true
     }
